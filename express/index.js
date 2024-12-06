@@ -1,10 +1,21 @@
 
 import express from "express"
 
+
 const app = express();
 
+
+app.set("view engine","ejs")
+
+
+app.use((req, res, next)=>{
+   console.log("I'm in middleWare");
+   return next()
+})
+
+
 app.get("/", (req, res) => {
-  res.send("hello ji salammmm");
+  res.render("index")
 });
 
 app.get("/contact", (req, res) => {
