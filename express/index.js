@@ -45,4 +45,16 @@ app.post("/go-data", (req, res) => {
   res.send("sended...");
 });
 
+
+
+
+app.get("/register",(req , res)=>{
+  
+})
+
+
+
+
+
+
 app.listen(3000);
