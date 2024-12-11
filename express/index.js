@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
-
+import userModel from "./models/user.js";
+import dbConnection from "./config/db.js";
 const app = express();
 
 app.use(morgan("dev"));
