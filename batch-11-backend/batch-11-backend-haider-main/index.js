@@ -23,7 +23,7 @@ app.use('/auth', authRoutes)
 app.use('/task', authenticateUser, taskRoutes)
 
 
-app.listen(process.env.PORT, () => console.log(`Server is running on PORT ${process.env.PORT}`));
+app.listen(3000, () => console.log(`Server is running on PORT ${process.env.PORT}`));
 
 
 //route=>request=>controllers=>service=>controller=>response

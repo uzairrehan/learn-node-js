@@ -38,6 +38,13 @@ router.post('/register', async (req, res) => {
 
 
 })
+
+
+router.get("/",(req,res)=>{
+    console.log("route")
+    res.send("this is AUTH")
+})
+
 router.post('/login', async (req, res) => {
     const { error, value } = loginSchema.validate(req.body);
     if (error) return sendResponse(res, 400, null, true, error.message)

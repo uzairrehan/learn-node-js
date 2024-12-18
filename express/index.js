@@ -1,7 +1,6 @@
 import express from "express";
 import morgan from "morgan";
 import userModel from "./models/user.js";
-import dbConnection from "./config/db.js";
 const app = express();
 
 app.use(morgan("dev"));
@@ -84,9 +83,9 @@ app.get("/get-user", (req, res) => {
 
 app.get("/update-user", async (req, res) => {
   await userModel.findOneAndUpdate(
-    { username: "update ho gaya " },
+    { username: "uzair shah" },
     {
-      username: "update",
+      email: "notyou@gmail.com",
     }
   );
   res.send("updated");
