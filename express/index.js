@@ -3,17 +3,13 @@ import morgan from "morgan";
 import mongoose from "mongoose";
 import userModel from "./models/user.js";
 import cors from "cors"
+import dbConnection from "./config/db.js";
 const app = express();
 
-
+ 
 // MongoDB Connection
-mongoose.connect("mongodb://0.0.0.0:27017/men").then(() => {
-  console.log("Connected to MongoDB");
-})
-.catch((e)=>{
-  console.log(`cant connect ${e}`);
-})
 
+dbConnection()
 
 
 // Middlewares
