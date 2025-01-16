@@ -11,16 +11,12 @@ const io = new Server(server, {
   },
 });
 
-const fileName = path.resolve(import.meta.dirname, "index.html");
-
-app.get("/", (req, res) => {
-  res.sendFile(fileName);
-});
 
 io.on("connection", (socket) => {
   console.log(`One user is connected ${socket.id}`);
   socket.on("chatmessage", (msg) => {
     console.log("message: " + msg);
+    io.emit("chatmessage", { msg });
   });
 });
 
