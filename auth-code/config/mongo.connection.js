@@ -3,12 +3,13 @@ import mongoose from "mongoose";
 function createConnection() {
     mongoose
     .connect(
-      "mongodb+srv://iamsyeduzairshah:uzairrehan2006@cluster0.kut25.mongodb.net/"
+      process.env.MONGODB_URI
     )
     .then(() => {
-      console.log("connected");
-    }).catch(()=>{
-      console.log("cant connect");
+      console.log("Connected to MongoDB");
+    }).catch((e)=>{
+      console.log("Cant connect to Database");
+      console.log(e);
     })
 } 
 
