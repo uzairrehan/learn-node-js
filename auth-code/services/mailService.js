@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 
 async function sendVerificationEmail(to, verificationLink) {
   const mailOptions = {
-    from: `"Verification Email" ${process.env.SENDER_EMAIL}`,
+    from: process.env.SENDER_EMAIL,
     to: to,
     subject: subject,
     html: verificationHTML(verificationLink),
@@ -28,6 +28,7 @@ async function sendVerificationEmail(to, verificationLink) {
     console.log(info);
   });
   console.log(info);
+  return info
 }
 
 export default sendVerificationEmail;
