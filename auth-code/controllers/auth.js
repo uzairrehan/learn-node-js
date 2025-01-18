@@ -2,12 +2,12 @@ import bcrypt from "bcrypt";
 import User from "../models/user.model.js";
 import sendVerificationEmail from "../services/mailService.js";
 import jwt from "jsonwebtoken";
+import sendResponse from "../helpers/send.response.js";
 
 async function verifyEmailController(req, res) {
   try {
     const { token } = req.query;
     const { email } = jwt.decode(token, process.env.JWT_SECRET);
-    // console.log(`email to be verify = ${email}`);
 
     const { username } = await User.findOneAndUpdate(
       { email: email },
@@ -16,6 +16,8 @@ async function verifyEmailController(req, res) {
 
     res.send(`This User is Verified ${username}`);
   } catch (error) {
+    sendResponse(res, 400, data, error, erorr);
+
     res.status(400).send({
       msg: error,
       err: true,

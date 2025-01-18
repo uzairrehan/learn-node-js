@@ -1,18 +1,15 @@
 import mongoose from "mongoose";
 
 function createConnection() {
-    mongoose
-    .connect(
-      process.env.MONGODB_URI
-    )
+  mongoose
+    .connect(process.env.MONGODB_URI)
     .then(() => {
       console.log("Connected to MongoDB");
-    }).catch((e)=>{
+    })
+    .catch((e) => {
       console.log("Cant connect to Database");
       console.log(e);
-    })
-} 
+    });
+}
 
-
-
-export default createConnection
+export default createConnection;

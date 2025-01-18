@@ -37,6 +37,4 @@ const verificationHTML = (verificationLink) => {
     `;
 };
 
-
-
-export {verificationHTML,subject}
+export { verificationHTML, subject };
