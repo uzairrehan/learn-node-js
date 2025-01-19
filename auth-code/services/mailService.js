@@ -1,17 +1,9 @@
-import nodemailer from "nodemailer";
 import {
   verificationHTML,
   subject,
 } from "../constants/verification.email.info.js";
+import transporter from "../config/nodemailer.connection.js"
 
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.SENDER_EMAIL,
-    pass: process.env.SENDER_PASS,
-  },
-});
 
 async function sendVerificationEmail(to, verificationLink) {
   const mailOptions = {
