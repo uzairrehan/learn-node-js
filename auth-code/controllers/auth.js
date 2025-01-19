@@ -3,25 +3,17 @@ import User from "../models/user.model.js";
 import sendVerificationEmail from "../services/mailService.js";
 import jwt from "jsonwebtoken";
 import sendResponse from "../helpers/send.response.js";
-
+import { verifyPageHTML } from "../constants/verification.email.info.js";
 async function verifyEmailController(req, res) {
   try {
     const { token } = req.query;
-    const { email } = jwt.decode(token, process.env.JWT_SECRET);
+    const { email, username } = jwt.decode(token, process.env.JWT_SECRET);
 
-    const { username } = await User.findOneAndUpdate(
-      { email: email },
-      { verified: true }
-    );
+    await User.findOneAndUpdate({ email: email }, { verified: true });
 
-    res.send(`This User is Verified ${username}`);
+    res.send(verifyPageHTML(username));
   } catch (error) {
-    sendResponse(res, 400, data, error, erorr);
-
-    res.status(400).send({
-      msg: error,
-      err: true,
-    });
+    sendResponse(res, 400, data, error, error);
   }
 }
 

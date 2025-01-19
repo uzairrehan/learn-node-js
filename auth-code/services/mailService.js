@@ -1,5 +1,5 @@
 import {
-  verificationHTML,
+  verificationEmailHTML,
   subject,
 } from "../constants/verification.email.info.js";
 import transporter from "../config/nodemailer.connection.js"
@@ -7,10 +7,10 @@ import transporter from "../config/nodemailer.connection.js"
 
 async function sendVerificationEmail(to, verificationLink) {
   const mailOptions = {
-    from: process.env.SENDER_EMAIL,
+    from:`Verification Email ${process.env.SENDER_EMAIL}`,
     to: to,
     subject: subject,
-    html: verificationHTML(verificationLink),
+    html: verificationEmailHTML(verificationLink),
   };
 
   const info = transporter.sendMail(mailOptions, (error, info) => {
